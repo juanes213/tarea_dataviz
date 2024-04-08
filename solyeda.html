@@ -1,0 +1,2028 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>POSTGRES ENTREGA PYTHON &#8212; Tarea 2 Visualización con Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solyeda';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Time Series" href="btc-usd.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Tarea 2 Visualización con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Tarea 2 Visualización con Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Errores_comunes_.html">Errores Comunes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="btc-usd.html">Time Series</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>POSTGRES ENTREGA PYTHON</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsolyeda.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/solyeda.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>POSTGRES ENTREGA PYTHON</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias"><strong>Importacion de librerias</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conexion-y-cursor"><strong>Creacion de conexion y cursor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-crear-la-tabla-nombrada-employees-y-explicar-que-tarea-realiza-la-consulta-realizada-y-mostrar-en-pantalla-la-tabla"><strong>I) Crear la tabla nombrada: employees y explicar que tarea realiza la consulta realizada y mostrar en pantalla la tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-crear-la-tabla-courses-con-las-siguientes-columnas"><strong>II) Crear la tabla courses con las siguientes columnas:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-insertar-datos"><strong>III) Insertar datos:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-borre-todos-los-cursos-que-no-esten-en-modo-borrador-ni-publicados-proporcione-la-sentencia-de-borrado-como-respuesta-para-este-ejercicio-en-el-jupyter-book-para-validar-obtenga-el-recuento-de-todos-los-cursos-publicados-por-autor-y-asegurese-de-que-la-salida-esta-ordenada-en-forma-descendente-por-recuento"><strong>IV) Borre todos los cursos que no estén en modo borrador ni publicados. Proporcione la sentencia de borrado como respuesta para este ejercicio en el Jupyter Book. Para validar, obtenga el recuento de todos los cursos publicados por autor y asegúrese de que la salida está ordenada en forma descendente por recuento.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-crear-la-base-de-datos-users"><strong>VI) Crear la base de datos users:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vii-obtenga-el-numero-de-usuarios-creados-por-ano-utilice-la-tabla-de-usuarios-para-este-ejercicio"><strong>VII) Obtenga el número de usuarios creados por año. Utilice la tabla de usuarios para este ejercicio:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viii-obtenga-los-dias-de-nacimiento-de-todos-los-usuarios-nacidos-en-el-mes-may"><strong>VIII) Obtenga los días de nacimiento de todos los usuarios nacidos en el mes May.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-obtenga-el-numero-de-usuarios-por-genero-utilice-la-tabla-de-users-para-este-ejercicio"><strong>X) Obtenga el número de usuarios por género. Utilice la tabla de users para este ejercicio.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xii-obtenga-los-4-ultimos-digitos-de-los-ids-unicos"><strong>XII) Obtenga los 4 últimos dígitos de los ids únicos:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xiii-obtenga-el-recuento-de-usuarios-en-funcion-del-codigo-de-pais"><strong>XIII) Obtenga el recuento de usuarios en función del código de país:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xiv-importe-los-datos-del-precio-de-cardano-usd-ada-usd-en-su-instancia-de-base-de-datos-docker-teniendo-en-cuenta-lo-explicado-durante-esta-seccion-luego-dibuje-un-grafico-de-candlestick-para-la-criptomoneda-en-el-siguiente-link-encontrara-el-csv-de-cardano-cardano-usd-ada-usd-describa-lo-que-puede-observar-en-la-serie-de-tiempo-realice-un-analisis-exploratorio-de-datos-eda-para-la-serie-de-tiempo"><strong>XIV)</strong> Importe los datos del precio de Cardano USD (ADA-USD) en su instancia de base de datos Docker, teniendo en cuenta lo explicado durante esta sección. Luego dibuje un gráfico de candlestick para la criptomoneda. En el siguiente link encontrará el CSV de Cardano: Cardano USD (ADA-USD). Describa lo que puede observar en la serie de tiempo. Realice un análisis exploratorio de datos (EDA) para la serie de tiempo.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-los-datos"><strong>Descripcion de los datos:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eda"><strong>EDA:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza"><strong>Limpieza</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary"><strong>Summary</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-sumamry">Analisis del Sumamry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observaciones-clave">Observaciones Clave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion"><strong>Correlacion</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones-observadas">Correlaciones Observadas:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones">Implicaciones:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gafico-candlestick"><strong>Gafico CandleStick:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-grafico-de-velas">Análisis de Gráfico de Velas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodos-de-volatilidad">Periodos de Volatilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodos-de-estabilidad">Periodos de Estabilidad</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patrones-observados-y-estrategias-sugeridas">Patrones Observados y Estrategias Sugeridas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tendencia-alcista">Tendencia Alcista</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posible-cambio-de-tendencia">Posible Cambio de Tendencia</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acciones-sugeridas">Acciones Sugeridas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategias-de-seguimiento-de-tendencia">Estrategias de Seguimiento de Tendencia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gestion-de-riesgos">Gestión de Riesgos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprovechamiento-de-correcciones">Aprovechamiento de Correcciones</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="postgres-entrega-python">
+<h1><strong>POSTGRES ENTREGA PYTHON</strong><a class="headerlink" href="#postgres-entrega-python" title="Link to this heading">#</a></h1>
+<section id="importacion-de-librerias">
+<h2><strong>Importacion de librerias</strong><a class="headerlink" href="#importacion-de-librerias" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">psycopg2</span> <span class="kn">import</span> <span class="n">Error</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">psycopg2</span> <span class="kn">import</span> <span class="n">Error</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;psycopg2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creacion-de-conexion-y-cursor">
+<h2><strong>Creacion de conexion y cursor</strong><a class="headerlink" href="#creacion-de-conexion-y-cursor" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;myname_db&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;myname_user&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>  <span class="c1"># o (127.0.0.1)</span>
+    <span class="n">port</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#NOTAS</span>
+<span class="c1">#cursor.execute(sql [, optional parameters]) HACER SOLICITUD</span>
+<span class="c1">#cursor.executemany(sql, seq_of_parameters) EJECUTA SQL CON VARIOS PARÁMETROS.</span>
+<span class="c1">#connection.commit() GUARDA LOS CAMBIOS</span>
+<span class="c1">#connection.rollback() REVIERTE CAMBIOS DESDE EL ULTIMO COMMIT</span>
+<span class="c1">#connection.close() CIERRA CONEXION SIN GUARDAR</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="i-crear-la-tabla-nombrada-employees-y-explicar-que-tarea-realiza-la-consulta-realizada-y-mostrar-en-pantalla-la-tabla">
+<h3><strong>I) Crear la tabla nombrada: employees y explicar que tarea realiza la consulta realizada y mostrar en pantalla la tabla</strong><a class="headerlink" href="#i-crear-la-tabla-nombrada-employees-y-explicar-que-tarea-realiza-la-consulta-realizada-y-mostrar-en-pantalla-la-tabla" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CREATE TABLE employees</span>
+<span class="sd">   ( employee_id INTEGER</span>
+<span class="sd">   , first_name VARCHAR(20)</span>
+<span class="sd">   , last_name VARCHAR(25)</span>
+<span class="sd">   , email VARCHAR(25)</span>
+<span class="sd">   , phone_number VARCHAR(20)</span>
+<span class="sd">   , hire_date DATE</span>
+<span class="sd">   , job_id VARCHAR(10)</span>
+<span class="sd">   , salary NUMERIC(8,2)</span>
+<span class="sd">   , commission_pct NUMERIC(2,2)</span>
+<span class="sd">   , manager_id INTEGER</span>
+<span class="sd">   , department_id INTEGER</span>
+<span class="sd">   ) ;    </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CREATE UNIQUE INDEX emp_emp_id_pk</span>
+<span class="sd">         ON employees (employee_id) ;</span>
+<span class="sd">ALTER TABLE employees ADD</span>
+<span class="sd">   PRIMARY KEY (employee_id);</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SELECT * FROM employees LIMIT 10;</span>
+<span class="sd">SELECT count(1) FROM employees;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ii-crear-la-tabla-courses-con-las-siguientes-columnas">
+<h3><strong>II) Crear la tabla courses con las siguientes columnas:</strong><a class="headerlink" href="#ii-crear-la-tabla-courses-con-las-siguientes-columnas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CREATE TABLE IF NOT EXISTS courses (</span>
+<span class="sd">    course_id SERIAL PRIMARY KEY,</span>
+<span class="sd">    course_name TEXT NOT NULL CHECK(length(course_name) &lt;= 60),</span>
+<span class="sd">    course_author TEXT NOT NULL CHECK(length(course_author) &lt;= 40),</span>
+<span class="sd">    course_status TEXT NOT NULL CHECK(course_status IN (&#39;published&#39;, &#39;draft&#39;, &#39;inactive&#39;)),</span>
+<span class="sd">    course_published_dt DATE</span>
+<span class="sd">);</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iii-insertar-datos">
+<h3><strong>III) Insertar datos:</strong><a class="headerlink" href="#iii-insertar-datos" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datacourses</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Jesus David\Desktop\POSTGRES\Entregablepy\datacourses.csv&quot;</span> <span class="c1">#la ruta cambia</span>
+
+<span class="c1"># Preparar la sentencia SQL para insertar datos</span>
+<span class="n">sentencia_sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">INSERT INTO courses (course_name, course_author, course_status, course_published_dt)</span>
+<span class="s2">VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datacourses</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+    
+    <span class="n">lector_csv</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">lector_csv</span><span class="p">:</span>
+        
+        
+        <span class="n">datos</span> <span class="o">=</span> <span class="p">[</span><span class="n">fila</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fila</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fila</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">fila</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="n">fila</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">]</span>
+
+        
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sentencia_sql</span><span class="p">,</span> <span class="n">datos</span><span class="p">)</span>
+
+
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iv-borre-todos-los-cursos-que-no-esten-en-modo-borrador-ni-publicados-proporcione-la-sentencia-de-borrado-como-respuesta-para-este-ejercicio-en-el-jupyter-book-para-validar-obtenga-el-recuento-de-todos-los-cursos-publicados-por-autor-y-asegurese-de-que-la-salida-esta-ordenada-en-forma-descendente-por-recuento">
+<h3><strong>IV) Borre todos los cursos que no estén en modo borrador ni publicados. Proporcione la sentencia de borrado como respuesta para este ejercicio en el Jupyter Book. Para validar, obtenga el recuento de todos los cursos publicados por autor y asegúrese de que la salida está ordenada en forma descendente por recuento.</strong><a class="headerlink" href="#iv-borre-todos-los-cursos-que-no-esten-en-modo-borrador-ni-publicados-proporcione-la-sentencia-de-borrado-como-respuesta-para-este-ejercicio-en-el-jupyter-book-para-validar-obtenga-el-recuento-de-todos-los-cursos-publicados-por-autor-y-asegurese-de-que-la-salida-esta-ordenada-en-forma-descendente-por-recuento" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delete_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    DELETE FROM courses</span>
+<span class="s2">    WHERE course_status NOT IN (&#39;draft&#39;, &#39;published&#39;);</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_query</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Se han eliminado los cursos que no están en modo borrador ni publicados.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se han eliminado los cursos que no están en modo borrador ni publicados.
+
+Recuento de cursos publicados por autor (ordenados por recuento descendente):
+Autor: Bob Dillon, Cursos Publicados: 4
+Autor: Elvis Presley, Cursos Publicados: 1
+Autor: Uncle Sam, Cursos Publicados: 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT course_author, COUNT(*) AS num_published_courses</span>
+<span class="s2">    FROM courses</span>
+<span class="s2">    WHERE course_status = &#39;published&#39;</span>
+<span class="s2">    GROUP BY course_author</span>
+<span class="s2">    ORDER BY num_published_courses DESC;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+<span class="n">tabla1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">select_query</span><span class="p">,</span><span class="n">connection</span><span class="p">)</span>    
+<span class="n">tabla1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\3152187163.py:8: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>course_author</th>
+      <th>num_published_courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bob Dillon</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Elvis Presley</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Uncle Sam</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="vi-crear-la-base-de-datos-users">
+<h3><strong>VI) Crear la base de datos users:</strong><a class="headerlink" href="#vi-crear-la-base-de-datos-users" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CREATE TABLE users(</span>
+<span class="sd">    user_id SERIAL PRIMARY KEY,</span>
+<span class="sd">    user_first_name VARCHAR(30),</span>
+<span class="sd">    user_last_name VARCHAR(30),</span>
+<span class="sd">    user_email_id VARCHAR(50),</span>
+<span class="sd">    user_gender VARCHAR(1),</span>
+<span class="sd">    user_unique_id VARCHAR(15),</span>
+<span class="sd">    user_phone_no VARCHAR(20),</span>
+<span class="sd">    user_dob DATE,</span>
+<span class="sd">    created_ts TIMESTAMP</span>
+<span class="sd">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">insert into users (</span>
+<span class="sd">    user_first_name, user_last_name, user_email_id, user_gender, </span>
+<span class="sd">    user_unique_id, user_phone_no, user_dob, created_ts</span>
+<span class="sd">) VALUES</span>
+<span class="sd">    (&#39;Giuseppe&#39;, &#39;Bode&#39;, &#39;gbode0@imgur.com&#39;, &#39;M&#39;, &#39;88833-8759&#39;, </span>
+<span class="sd">     &#39;+86 (764) 443-1967&#39;, &#39;1973-05-31&#39;, &#39;2018-04-15 12:13:38&#39;),</span>
+<span class="sd">    (&#39;Lexy&#39;, &#39;Gisbey&#39;, &#39;lgisbey1@mail.ru&#39;, &#39;F&#39;, &#39;262501-029&#39;, </span>
+<span class="sd">     &#39;+86 (751) 160-3742&#39;, &#39;2003-05-31&#39;, &#39;2020-12-29 06:44:09&#39;),</span>
+<span class="sd">    (&#39;Karel&#39;, &#39;Claringbold&#39;, &#39;kclaringbold2@yale.edu&#39;, &#39;F&#39;, &#39;391-33-2823&#39;, </span>
+<span class="sd">     &#39;+62 (445) 471-2682&#39;, &#39;1985-11-28&#39;, &#39;2018-11-19 00:04:08&#39;),</span>
+<span class="sd">    (&#39;Marv&#39;, &#39;Tanswill&#39;, &#39;mtanswill3@dedecms.com&#39;, &#39;F&#39;, &#39;1195413-80&#39;, </span>
+<span class="sd">     &#39;+62 (497) 736-6802&#39;, &#39;1998-05-24&#39;, &#39;2018-11-19 16:29:43&#39;),</span>
+<span class="sd">    (&#39;Gertie&#39;, &#39;Espinoza&#39;, &#39;gespinoza4@nationalgeographic.com&#39;, &#39;M&#39;, &#39;471-24-6869&#39;, </span>
+<span class="sd">     &#39;+249 (687) 506-2960&#39;, &#39;1997-10-30&#39;, &#39;2020-01-25 21:31:10&#39;),</span>
+<span class="sd">    (&#39;Saleem&#39;, &#39;Danneil&#39;, &#39;sdanneil5@guardian.co.uk&#39;, &#39;F&#39;, &#39;192374-933&#39;, </span>
+<span class="sd">     &#39;+63 (810) 321-0331&#39;, &#39;1992-03-08&#39;, &#39;2020-11-07 19:01:14&#39;),</span>
+<span class="sd">    (&#39;Rickert&#39;, &#39;O&#39;&#39;Shiels&#39;, &#39;roshiels6@wikispaces.com&#39;, &#39;M&#39;, &#39;749-27-47-52&#39;, </span>
+<span class="sd">     &#39;+86 (184) 759-3933&#39;, &#39;1972-11-01&#39;, &#39;2018-03-20 10:53:24&#39;),</span>
+<span class="sd">    (&#39;Cybil&#39;, &#39;Lissimore&#39;, &#39;clissimore7@pinterest.com&#39;, &#39;M&#39;, &#39;461-75-4198&#39;, </span>
+<span class="sd">     &#39;+54 (613) 939-6976&#39;, &#39;1978-03-03&#39;, &#39;2019-12-09 14:08:30&#39;),</span>
+<span class="sd">    (&#39;Melita&#39;, &#39;Rimington&#39;, &#39;mrimington8@mozilla.org&#39;, &#39;F&#39;, &#39;892-36-676-2&#39;, </span>
+<span class="sd">     &#39;+48 (322) 829-8638&#39;, &#39;1995-12-15&#39;, &#39;2018-04-03 04:21:33&#39;),</span>
+<span class="sd">    (&#39;Benetta&#39;, &#39;Nana&#39;, &#39;bnana9@google.com&#39;, &#39;M&#39;, &#39;197-54-1646&#39;, </span>
+<span class="sd">     &#39;+420 (934) 611-0020&#39;, &#39;1971-12-07&#39;, &#39;2018-10-17 21:02:51&#39;),</span>
+<span class="sd">    (&#39;Gregorius&#39;, &#39;Gullane&#39;, &#39;ggullanea@prnewswire.com&#39;, &#39;F&#39;, &#39;232-55-52-58&#39;, </span>
+<span class="sd">     &#39;+62 (780) 859-1578&#39;, &#39;1973-09-18&#39;, &#39;2020-01-14 23:38:53&#39;),</span>
+<span class="sd">    (&#39;Una&#39;, &#39;Glayzer&#39;, &#39;uglayzerb@pinterest.com&#39;, &#39;M&#39;, &#39;898-84-336-6&#39;, </span>
+<span class="sd">     &#39;+380 (840) 437-3981&#39;, &#39;1983-05-26&#39;, &#39;2019-09-17 03:24:21&#39;),</span>
+<span class="sd">    (&#39;Jamie&#39;, &#39;Vosper&#39;, &#39;jvosperc@umich.edu&#39;, &#39;M&#39;, &#39;247-95-68-44&#39;, </span>
+<span class="sd">     &#39;+81 (205) 723-1942&#39;, &#39;1972-03-18&#39;, &#39;2020-07-23 16:39:33&#39;),</span>
+<span class="sd">    (&#39;Calley&#39;, &#39;Tilson&#39;, &#39;ctilsond@issuu.com&#39;, &#39;F&#39;, &#39;415-48-894-3&#39;, </span>
+<span class="sd">     &#39;+229 (698) 777-4904&#39;, &#39;1987-06-12&#39;, &#39;2020-06-05 12:10:50&#39;),</span>
+<span class="sd">    (&#39;Peadar&#39;, &#39;Gregorowicz&#39;, &#39;pgregorowicze@omniture.com&#39;, &#39;M&#39;, &#39;403-39-5-869&#39;, </span>
+<span class="sd">     &#39;+7 (267) 853-3262&#39;, &#39;1996-09-21&#39;, &#39;2018-05-29 23:51:31&#39;),</span>
+<span class="sd">    (&#39;Jeanie&#39;, &#39;Webling&#39;, &#39;jweblingf@booking.com&#39;, &#39;F&#39;, &#39;399-83-05-03&#39;, </span>
+<span class="sd">     &#39;+351 (684) 413-0550&#39;, &#39;1994-12-27&#39;, &#39;2018-02-09 01:31:11&#39;),</span>
+<span class="sd">    (&#39;Yankee&#39;, &#39;Jelf&#39;, &#39;yjelfg@wufoo.com&#39;, &#39;F&#39;, &#39;607-99-0411&#39;, </span>
+<span class="sd">     &#39;+1 (864) 112-7432&#39;, &#39;1988-11-13&#39;, &#39;2019-09-16 16:09:12&#39;),</span>
+<span class="sd">    (&#39;Blair&#39;, &#39;Aumerle&#39;, &#39;baumerleh@toplist.cz&#39;, &#39;F&#39;, &#39;430-01-578-5&#39;, </span>
+<span class="sd">     &#39;+7 (393) 232-1860&#39;, &#39;1979-11-09&#39;, &#39;2018-10-28 19:25:35&#39;),</span>
+<span class="sd">    (&#39;Pavlov&#39;, &#39;Steljes&#39;, &#39;psteljesi@macromedia.com&#39;, &#39;F&#39;, &#39;571-09-6181&#39;, </span>
+<span class="sd">     &#39;+598 (877) 881-3236&#39;, &#39;1991-06-24&#39;, &#39;2020-09-18 05:34:31&#39;),</span>
+<span class="sd">    (&#39;Darn&#39;, &#39;Hadeke&#39;, &#39;dhadekej@last.fm&#39;, &#39;M&#39;, &#39;478-32-02-87&#39;, </span>
+<span class="sd">     &#39;+370 (347) 110-4270&#39;, &#39;1984-09-04&#39;, &#39;2018-02-10 12:56:00&#39;),</span>
+<span class="sd">    (&#39;Wendell&#39;, &#39;Spanton&#39;, &#39;wspantonk@de.vu&#39;, &#39;F&#39;, null, </span>
+<span class="sd">     &#39;+84 (301) 762-1316&#39;, &#39;1973-07-24&#39;, &#39;2018-01-30 01:20:11&#39;),</span>
+<span class="sd">    (&#39;Carlo&#39;, &#39;Yearby&#39;, &#39;cyearbyl@comcast.net&#39;, &#39;F&#39;, null, </span>
+<span class="sd">     &#39;+55 (288) 623-4067&#39;, &#39;1974-11-11&#39;, &#39;2018-06-24 03:18:40&#39;),</span>
+<span class="sd">    (&#39;Sheila&#39;, &#39;Evitts&#39;, &#39;sevittsm@webmd.com&#39;, null, &#39;830-40-5287&#39;,</span>
+<span class="sd">     null, &#39;1977-03-01&#39;, &#39;2020-07-20 09:59:41&#39;),</span>
+<span class="sd">    (&#39;Sianna&#39;, &#39;Lowdham&#39;, &#39;slowdhamn@stanford.edu&#39;, null, &#39;778-0845&#39;, </span>
+<span class="sd">     null, &#39;1985-12-23&#39;, &#39;2018-06-29 02:42:49&#39;),</span>
+<span class="sd">    (&#39;Phylys&#39;, &#39;Aslie&#39;, &#39;paslieo@qq.com&#39;, &#39;M&#39;, &#39;368-44-4478&#39;, </span>
+<span class="sd">     &#39;+86 (765) 152-8654&#39;, &#39;1984-03-22&#39;, &#39;2019-10-01 01:34:28&#39;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vii-obtenga-el-numero-de-usuarios-creados-por-ano-utilice-la-tabla-de-usuarios-para-este-ejercicio">
+<h3><strong>VII) Obtenga el número de usuarios creados por año. Utilice la tabla de usuarios para este ejercicio:</strong><a class="headerlink" href="#vii-obtenga-el-numero-de-usuarios-creados-por-ano-utilice-la-tabla-de-usuarios-para-este-ejercicio" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La salida debe contener el año de 4 dígitos y el recuento.</p></li>
+<li><p>Use funciones específicas de fecha para obtener el año usando created_ts.</p></li>
+<li><p>Asegúrese de definir alias a las columnas como created_year y user_count respectivamente.</p></li>
+<li><p>Los datos deben ordenarse de forma ascendente por created_year.</p></li>
+<li><p>Cuando ejecutes la consulta usando el entorno Jupyter, puede que tenga decimales para los enteros. Por lo tanto, puede mostrar los resultados incluso con decimales.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query1</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT EXTRACT(YEAR FROM created_ts) AS created_year,</span>
+<span class="s2">           COUNT(*) AS user_count</span>
+<span class="s2">    FROM users</span>
+<span class="s2">    GROUP BY created_year</span>
+<span class="s2">    ORDER BY created_year ASC;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="n">tabla2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query1</span><span class="p">,</span><span class="n">connection</span><span class="p">)</span>
+<span class="n">tabla2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\1116862925.py:9: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>created_year</th>
+      <th>user_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2018.0</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2020.0</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="viii-obtenga-los-dias-de-nacimiento-de-todos-los-usuarios-nacidos-en-el-mes-may">
+<h3><strong>VIII) Obtenga los días de nacimiento de todos los usuarios nacidos en el mes May.</strong><a class="headerlink" href="#viii-obtenga-los-dias-de-nacimiento-de-todos-los-usuarios-nacidos-en-el-mes-may" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Utilice la tabla users para este ejercicio.</p></li>
+<li><p>La salida debe contener user_id, user_dob, user_email_id y user_day_of_birth.</p></li>
+<li><p>Utilice funciones específicas de fecha para obtener el mes utilizando user_dob.</p></li>
+<li><p>user_day_of_birth debe ser un día completo con el primer carácter en mayúsculas, por ejemplo Tuesday.</p></li>
+<li><p>Los datos deben ordenarse por día dentro del mes May.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT user_id,</span>
+<span class="s2">           user_dob,</span>
+<span class="s2">           user_email_id,</span>
+<span class="s2">           TO_CHAR(user_dob, &#39;Day&#39;) AS user_day_of_birth</span>
+<span class="s2">    FROM users</span>
+<span class="s2">    WHERE EXTRACT(MONTH FROM user_dob) = 5</span>
+<span class="s2">    ORDER BY EXTRACT(DAY FROM user_dob);</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="n">tabla3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query2</span><span class="p">,</span><span class="n">connection</span><span class="p">)</span>
+<span class="n">tabla3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\1398061144.py:11: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user_id</th>
+      <th>user_dob</th>
+      <th>user_email_id</th>
+      <th>user_day_of_birth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>1998-05-24</td>
+      <td>mtanswill3@dedecms.com</td>
+      <td>Sunday</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+      <td>1983-05-26</td>
+      <td>uglayzerb@pinterest.com</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1973-05-31</td>
+      <td>gbode0@imgur.com</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>2003-05-31</td>
+      <td>lgisbey1@mail.ru</td>
+      <td>Saturday</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="x-obtenga-el-numero-de-usuarios-por-genero-utilice-la-tabla-de-users-para-este-ejercicio">
+<h3><strong>X) Obtenga el número de usuarios por género. Utilice la tabla de users para este ejercicio.</strong><a class="headerlink" href="#x-obtenga-el-numero-de-usuarios-por-genero-utilice-la-tabla-de-users-para-este-ejercicio" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La salida debe contener el gender y user_count.</p></li>
+<li><p>Para los hombres la salida debe mostrar Male y para las mujeres la salida debe mostrar Female.</p></li>
+<li><p>Si no se especifica el sexo, se mostrará Not Specified</p></li>
+<li><p>Los datos deben ordenarse en forma descendente por user_count.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query6</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT</span>
+<span class="s2">        CASE</span>
+<span class="s2">            WHEN user_gender = &#39;M&#39; THEN &#39;Male&#39;</span>
+<span class="s2">            WHEN user_gender = &#39;F&#39; THEN &#39;Female&#39;</span>
+<span class="s2">            ELSE &#39;Not Specified&#39;</span>
+<span class="s2">        END AS gender,</span>
+<span class="s2">        COUNT(*) AS user_count</span>
+<span class="s2">    FROM users</span>
+<span class="s2">    GROUP BY user_gender</span>
+<span class="s2">    ORDER BY user_count DESC;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="n">tabla6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query6</span><span class="p">,</span><span class="n">connection</span><span class="p">)</span>
+<span class="n">tabla6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\3631390477.py:14: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>user_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Not Specified</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="xii-obtenga-los-4-ultimos-digitos-de-los-ids-unicos">
+<h3><strong>XII) Obtenga los 4 últimos dígitos de los ids únicos:</strong><a class="headerlink" href="#xii-obtenga-los-4-ultimos-digitos-de-los-ids-unicos" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Utilice la tabla users para este ejercicio.</p></li>
+<li><p>El resultado debe contener user_id, user_unique_id y user_unique_id_last4.</p></li>
+<li><p>Los identificadores únicos son null o not null.</p></li>
+<li><p>Los identificadores únicos contienen números y guiones y son de diferente longitud.</p></li>
+<li><p>Necesitamos obtener los últimos 4 dígitos descartando los guiones sólo cuando el número de dígitos es al menos 9.</p></li>
+<li><p>Si el identificador único es nulo, debe mostrarse Not Specified.</p></li>
+<li><p>Después de descartar los guiones, si el identificador único tiene menos de 9 dígitos, debe mostrar Invalid Unique Id.</p></li>
+<li><p>Los datos deben ordenarse por user_id. Es posible que aparezca None o null para aquellos identificadores de usuario en los que no haya un identificador único para user_unique_id.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query7</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT</span>
+<span class="s2">        user_id,</span>
+<span class="s2">        COALESCE(user_unique_id, &#39;Not Specified&#39;) AS user_unique_id,</span>
+<span class="s2">        CASE</span>
+<span class="s2">            WHEN user_unique_id IS NULL THEN &#39;Not Specified&#39;</span>
+<span class="s2">            WHEN LENGTH(REGEXP_REPLACE(user_unique_id, &#39;-&#39;, &#39;&#39;)) &lt; 9 THEN &#39;Invalid Unique Id&#39;</span>
+<span class="s2">            ELSE RIGHT(REGEXP_REPLACE(user_unique_id, &#39;-&#39;, &#39;&#39;), 4)</span>
+<span class="s2">        END AS user_unique_id_last4</span>
+<span class="s2">    FROM users</span>
+<span class="s2">    ORDER BY user_id;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="n">tabla7</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query7</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span>
+<span class="n">tabla7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\3326471635.py:14: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user_id</th>
+      <th>user_unique_id</th>
+      <th>user_unique_id_last4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>88833-8759</td>
+      <td>8759</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>262501-029</td>
+      <td>1029</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>391-33-2823</td>
+      <td>2823</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1195413-80</td>
+      <td>1380</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>471-24-6869</td>
+      <td>6869</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>192374-933</td>
+      <td>4933</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>749-27-47-52</td>
+      <td>7-52</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>461-75-4198</td>
+      <td>4198</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>892-36-676-2</td>
+      <td>76-2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>197-54-1646</td>
+      <td>1646</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>232-55-52-58</td>
+      <td>2-58</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>898-84-336-6</td>
+      <td>36-6</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>247-95-68-44</td>
+      <td>8-44</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>415-48-894-3</td>
+      <td>94-3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>403-39-5-869</td>
+      <td>-869</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>399-83-05-03</td>
+      <td>5-03</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>607-99-0411</td>
+      <td>0411</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>430-01-578-5</td>
+      <td>78-5</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>571-09-6181</td>
+      <td>6181</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>478-32-02-87</td>
+      <td>2-87</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>Not Specified</td>
+      <td>Not Specified</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>Not Specified</td>
+      <td>Not Specified</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>830-40-5287</td>
+      <td>5287</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>778-0845</td>
+      <td>Invalid Unique Id</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>368-44-4478</td>
+      <td>4478</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="xiii-obtenga-el-recuento-de-usuarios-en-funcion-del-codigo-de-pais">
+<h3><strong>XIII) Obtenga el recuento de usuarios en función del código de país:</strong><a class="headerlink" href="#xiii-obtenga-el-recuento-de-usuarios-en-funcion-del-codigo-de-pais" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Utilice la tabla users para este ejercicio.</p></li>
+<li><p>La salida debe contener el código de país y el recuento.</p></li>
+<li><p>No debe haber ningún + en el código de país. Sólo debe contener dígitos.</p></li>
+<li><p>Los datos deben ordenarse como números por código de país.</p></li>
+<li><p>Debemos descartar user_phone_no con valores null.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query8</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">    country_code,</span>
+<span class="s2">    COUNT(*) AS number_of_people</span>
+<span class="s2">FROM (</span>
+<span class="s2">    SELECT</span>
+<span class="s2">        CAST(</span>
+<span class="s2">            CASE</span>
+<span class="s2">                WHEN POSITION(&#39; &#39; IN SUBSTRING(user_phone_no FROM 2)) &gt; 0 THEN</span>
+<span class="s2">                    SUBSTRING(user_phone_no FROM 2 FOR POSITION(&#39; &#39; IN SUBSTRING(user_phone_no FROM 2)) - 1)</span>
+<span class="s2">                WHEN POSITION(&#39;(&#39; IN SUBSTRING(user_phone_no FROM 2)) &gt; 0 THEN</span>
+<span class="s2">                    SUBSTRING(user_phone_no FROM 2 FOR POSITION(&#39;(&#39; IN SUBSTRING(user_phone_no FROM 2)) - 1)</span>
+<span class="s2">                ELSE</span>
+<span class="s2">                    SUBSTRING(user_phone_no FROM 2 FOR 3)</span>
+<span class="s2">            END AS INTEGER</span>
+<span class="s2">        ) AS country_code</span>
+<span class="s2">    FROM</span>
+<span class="s2">        users</span>
+<span class="s2">    WHERE</span>
+<span class="s2">        user_phone_no IS NOT NULL AND</span>
+<span class="s2">        user_phone_no LIKE &#39;+%&#39;</span>
+<span class="s2">) AS extracted_codes</span>
+<span class="s2">GROUP BY</span>
+<span class="s2">    country_code</span>
+<span class="s2">ORDER BY</span>
+<span class="s2">    country_code</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">tabla8</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query8</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span>
+<span class="n">tabla8</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\3525124208.py:28: UserWarning:
+
+pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country_code</th>
+      <th>number_of_people</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>48</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>54</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>62</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>63</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>81</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>84</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>86</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>229</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>249</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>351</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>370</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>380</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>420</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>598</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="xiv-importe-los-datos-del-precio-de-cardano-usd-ada-usd-en-su-instancia-de-base-de-datos-docker-teniendo-en-cuenta-lo-explicado-durante-esta-seccion-luego-dibuje-un-grafico-de-candlestick-para-la-criptomoneda-en-el-siguiente-link-encontrara-el-csv-de-cardano-cardano-usd-ada-usd-describa-lo-que-puede-observar-en-la-serie-de-tiempo-realice-un-analisis-exploratorio-de-datos-eda-para-la-serie-de-tiempo">
+<h3><strong>XIV)</strong> Importe los datos del precio de Cardano USD (ADA-USD) en su instancia de base de datos Docker, teniendo en cuenta lo explicado durante esta sección. Luego dibuje un gráfico de candlestick para la criptomoneda. En el siguiente link encontrará el CSV de Cardano: Cardano USD (ADA-USD). Describa lo que puede observar en la serie de tiempo. Realice un análisis exploratorio de datos (EDA) para la serie de tiempo.<a class="headerlink" href="#xiv-importe-los-datos-del-precio-de-cardano-usd-ada-usd-en-su-instancia-de-base-de-datos-docker-teniendo-en-cuenta-lo-explicado-durante-esta-seccion-luego-dibuje-un-grafico-de-candlestick-para-la-criptomoneda-en-el-siguiente-link-encontrara-el-csv-de-cardano-cardano-usd-ada-usd-describa-lo-que-puede-observar-en-la-serie-de-tiempo-realice-un-analisis-exploratorio-de-datos-eda-para-la-serie-de-tiempo" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CREATE TABLE cordanoUSD (</span>
+<span class="sd">    Date DATE,</span>
+<span class="sd">    Open FLOAT,</span>
+<span class="sd">    High FLOAT,</span>
+<span class="sd">    Low FLOAT,</span>
+<span class="sd">    Close FLOAT,</span>
+<span class="sd">    Adj_Close FLOAT,</span>
+<span class="sd">    Volume NUMERIC</span>
+<span class="sd">);</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Descargar el archivo CSV desde el enlace</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/lihkir/Uninorte/main/AppliedStatisticMS/DataVisualizationRPython/Lectures/Python/PythonDataSets/ADA-USD.csv&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># Leer el contenido del archivo CSV</span>
+    <span class="n">csv_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="c1"># Crear un objeto StringIO para leer el contenido como un archivo</span>
+    <span class="n">csv_file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">csv_data</span><span class="p">)</span>
+
+    <span class="c1"># Crear un objeto para leer el archivo CSV</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+
+    <span class="c1"># Preparar la sentencia SQL para insertar datos</span>
+    <span class="n">sentencia_sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    INSERT INTO cordanousd (Date, Open, High, Low, Close, Adj_Close, Volume)</span>
+<span class="s2">    VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">);</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Iterar sobre cada fila del DataFrame y ejecutar la sentencia SQL para insertar los datos</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">datos</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Open&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;High&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Low&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Adj Close&quot;</span><span class="p">],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Volume&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sentencia_sql</span><span class="p">,</span> <span class="n">datos</span><span class="p">)</span>
+
+    <span class="c1"># Hacer commit para guardar los cambios en la base de datos</span>
+    <span class="c1"># connection.commit()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Los datos se importaron correctamente.&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al importar los datos:&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Los datos se importaron correctamente.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="descripcion-de-los-datos">
+<h4><strong>Descripcion de los datos:</strong><a class="headerlink" href="#descripcion-de-los-datos" title="Link to this heading">#</a></h4>
+<p>Los datos analizados pertenecen a la criptomoneda <strong>Cardano USD (ADA-USD)</strong>, iniciando en octubre de 2017. A continuación, se detallan las columnas presentes en el conjunto de datos:</p>
+<ul class="simple">
+<li><p><strong>Fecha</strong>: El día específico al cual pertenecen los datos.</p></li>
+<li><p><strong>Apertura (Open)</strong>: El valor de apertura del activo ese día.</p></li>
+<li><p><strong>Máximo (High)</strong>: El valor más alto alcanzado por el activo durante el día.</p></li>
+<li><p><strong>Mínimo (Low)</strong>: El valor más bajo registrado por el activo en el día.</p></li>
+<li><p><strong>Cierre (Close)</strong>: El valor del activo al cierre del mercado.</p></li>
+<li><p><strong>Cierre Ajustado (Adj Close)</strong>: El valor de cierre ajustado, que podría considerar variables como dividendos o splits de acciones, si aplica.</p></li>
+<li><p><strong>Volumen (Volume)</strong>: La cantidad total de activos negociados durante el día.</p></li>
+</ul>
+<p>Por ejemplo, el registro del <strong>1 de octubre de 2017</strong>, muestra un valor de apertura de aproximadamente <strong>0.0217</strong>, alcanzando un máximo de <strong>0.0322</strong> y un mínimo de <strong>0.01735</strong> a lo largo del día, para cerrar en <strong>0.02497</strong>. El volumen de transacciones ese día fue de alrededor de <strong>50,068,700</strong> unidades.</p>
+<p>La importancia de este conjunto de datos radica en su capacidad para ofrecer una visión detallada de la actividad diaria de Cardano USD, proporcionando a analistas financieros, inversionistas y entusiastas del mercado una herramienta valiosa para identificar tendencias, soportes y resistencias en el precio de esta criptomoneda.</p>
+</section>
+<section id="eda">
+<h4><strong>EDA:</strong><a class="headerlink" href="#eda" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-10-01</td>
+      <td>0.021678</td>
+      <td>0.032226</td>
+      <td>0.017354</td>
+      <td>0.024969</td>
+      <td>0.024969</td>
+      <td>50068700.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-10-02</td>
+      <td>0.024607</td>
+      <td>0.030088</td>
+      <td>0.019969</td>
+      <td>0.025932</td>
+      <td>0.025932</td>
+      <td>57641300.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-10-03</td>
+      <td>0.025757</td>
+      <td>0.027425</td>
+      <td>0.020690</td>
+      <td>0.020816</td>
+      <td>0.020816</td>
+      <td>16997800.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-10-04</td>
+      <td>0.020864</td>
+      <td>0.022806</td>
+      <td>0.020864</td>
+      <td>0.021931</td>
+      <td>0.021931</td>
+      <td>9000050.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-10-05</td>
+      <td>0.021951</td>
+      <td>0.022154</td>
+      <td>0.020859</td>
+      <td>0.021489</td>
+      <td>0.021489</td>
+      <td>5562510.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Date&#39;, &#39;Open&#39;, &#39;High&#39;, &#39;Low&#39;, &#39;Close&#39;, &#39;Adj Close&#39;, &#39;Volume&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_faltantes</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos_faltantes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date         0
+Open         4
+High         4
+Low          4
+Close        4
+Adj Close    4
+Volume       4
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="limpieza">
+<h4><strong>Limpieza</strong><a class="headerlink" href="#limpieza" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataclean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">)</span>
+<span class="n">dataclean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_faltantes1</span> <span class="o">=</span> <span class="n">dataclean</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datos_faltantes1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date         0
+Open         0
+High         0
+Low          0
+Close        0
+Adj Close    0
+Volume       0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary">
+<h4><strong>Summary</strong><a class="headerlink" href="#summary" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">resumen_completo</span> <span class="o">=</span> <span class="n">dataclean</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_completo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                Date         Open         High          Low  \
+count                           1471  1471.000000  1471.000000  1471.000000   
+mean   2019-10-07 02:47:23.779741696     0.374234     0.393359     0.354385   
+min              2017-10-01 00:00:00     0.018414     0.021050     0.017354   
+25%              2018-10-03 12:00:00     0.047560     0.049503     0.046073   
+50%              2019-10-06 00:00:00     0.093398     0.096776     0.090105   
+75%              2020-10-09 00:00:00     0.301339     0.318211     0.283567   
+max              2021-10-14 00:00:00     2.966390     3.099186     2.907606   
+std                              NaN     0.609602     0.639195     0.578952   
+
+             Close    Adj Close        Volume  
+count  1471.000000  1471.000000  1.471000e+03  
+mean      0.375726     0.375726  1.090947e+09  
+min       0.018539     0.018539  1.739460e+06  
+25%       0.047592     0.047592  5.366896e+07  
+50%       0.093434     0.093434  1.359691e+08  
+75%       0.301889     0.301889  6.999972e+08  
+max       2.968239     2.968239  1.914198e+10  
+std       0.611501     0.611501  2.258370e+09  
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Jesus David\AppData\Local\Temp\ipykernel_5028\2559787383.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dataclean[&#39;Date&#39;] = pd.to_datetime(dataclean[&#39;Date&#39;], format=&#39;%Y-%m-%d&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="analisis-del-sumamry">
+<h2>Analisis del Sumamry<a class="headerlink" href="#analisis-del-sumamry" title="Link to this heading">#</a></h2>
+<p>Los siguientes son los principales indicadores estadísticos del conjunto de datos:</p>
+<ul class="simple">
+<li><p><strong>Cantidad de Registros</strong>: Hay un total de 1471 registros que cubren las transacciones diarias.</p></li>
+<li><p><strong>Promedio</strong>:</p>
+<ul>
+<li><p><strong>Apertura (Open)</strong>: $0.374</p></li>
+<li><p><strong>Máximo (High)</strong>: $0.393</p></li>
+<li><p><strong>Mínimo (Low)</strong>: $0.354</p></li>
+<li><p><strong>Cierre (Close)</strong>: $0.376</p></li>
+<li><p><strong>Volumen de Transacciones</strong>: Aproximadamente 1,090,947,000 unidades.</p></li>
+</ul>
+</li>
+<li><p><strong>Desviación Estándar</strong> (que muestra la variabilidad):</p>
+<ul>
+<li><p><strong>Apertura (Open)</strong>, <strong>Máximo (High)</strong>, <strong>Mínimo (Low)</strong>, y <strong>Cierre (Close)</strong>: Varía entre <span class="math notranslate nohighlight">\(0.578 y \)</span>0.639, indicando una variabilidad significativa en los precios a lo largo del tiempo.</p></li>
+<li><p><strong>Volumen de Transacciones</strong>: 2,258,370,000, lo que refleja una amplia variabilidad en el volumen de transacciones diarias.</p></li>
+</ul>
+</li>
+<li><p><strong>Valores Mínimos</strong>:</p>
+<ul>
+<li><p>Se observaron valores mínimos en todas las categorías por debajo de $0.021, indicando los días de menor valoración de la criptomoneda.</p></li>
+</ul>
+</li>
+<li><p><strong>Valores Máximos</strong>:</p>
+<ul>
+<li><p>Se registraron máximos superiores a $2.9, destacando los picos de valoración dentro del período analizado.</p></li>
+</ul>
+</li>
+<li><p><strong>Cuartiles</strong>:</p>
+<ul>
+<li><p><strong>25%</strong> de los días, los valores estuvieron por debajo de $0.047, mostrando los periodos de baja valoración.</p></li>
+<li><p><strong>50%</strong> (Mediana) refleja un mercado más estable con valores cercanos a $0.093.</p></li>
+<li><p><strong>75%</strong> de los registros muestran valores por encima de $0.301, indicando los periodos de alta valoración.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="observaciones-clave">
+<h2>Observaciones Clave<a class="headerlink" href="#observaciones-clave" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Volatilidad</strong>: La variabilidad en los precios y el volumen de transacciones resalta la <strong>volatilidad</strong> característica de ADA-USD. Esta volatilidad refleja la influencia de factores externos y cambios en el sentimiento del mercado, comunes en el ecosistema de las criptomonedas.</p></li>
+<li><p><strong>Crecimiento</strong>: A pesar de la volatilidad, los datos indican un <strong>crecimiento a largo plazo</strong> en el valor de Cardano. Esto sugiere que, a lo largo del tiempo, ADA-USD ha experimentado períodos de apreciación significativa, posiblemente ofreciendo oportunidades de inversión atractivas a largo plazo.</p></li>
+<li><p><strong>Actividad del Mercado</strong>: La amplia variabilidad en el <strong>volumen de transacciones</strong> sugiere períodos de intensa actividad comercial, asociados tanto con aumentos como con disminuciones en el precio, lo que puede señalar eventos de mercado significativos que afectan a Cardano.</p></li>
+<li><p><strong>Potencial de Inversión</strong>: Este análisis proporciona una <strong>perspectiva valiosa</strong> para inversionistas y analistas interesados en Cardano. Aunque invertir en criptomonedas implica riesgos, especialmente por la volatilidad, ADA-USD ha mostrado potencial de crecimiento a lo largo del tiempo.</p></li>
+</ol>
+<section id="correlacion">
+<h3><strong>Correlacion</strong><a class="headerlink" href="#correlacion" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matriz_correlacion</span> <span class="o">=</span> <span class="n">dataclean</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matriz_correlacion</span><span class="p">)</span>
+
+<span class="c1"># Creando el mapa de calor</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">matriz_correlacion</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Añadiendo títulos y etiquetas (opcional)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mapa de Calor de la Matriz de Correlación&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Date      Open      High       Low     Close  Adj Close  \
+Date       1.000000  0.566310  0.564018  0.570708  0.567588   0.567588   
+Open       0.566310  1.000000  0.998109  0.997103  0.996772   0.996772   
+High       0.564018  0.998109  1.000000  0.996368  0.998885   0.998885   
+Low        0.570708  0.997103  0.996368  1.000000  0.997776   0.997776   
+Close      0.567588  0.996772  0.998885  0.997776  1.000000   1.000000   
+Adj Close  0.567588  0.996772  0.998885  0.997776  1.000000   1.000000   
+Volume     0.569823  0.721066  0.737958  0.704332  0.728244   0.728244   
+
+             Volume  
+Date       0.569823  
+Open       0.721066  
+High       0.737958  
+Low        0.704332  
+Close      0.728244  
+Adj Close  0.728244  
+Volume     1.000000  
+</pre></div>
+</div>
+<img alt="_images/e1c94edcbb4c9dd2650b793409825a8db25903d075a3e9209906e3f310206564.png" src="_images/e1c94edcbb4c9dd2650b793409825a8db25903d075a3e9209906e3f310206564.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="correlaciones-observadas">
+<h2>Correlaciones Observadas:<a class="headerlink" href="#correlaciones-observadas" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Precios entre sí (Open, High, Low, Close, Adj Close)</strong>: Las correlaciones son extremadamente altas (mayores a 0.99 en la mayoría de los casos), lo cual indica que estos precios se mueven muy en conjunto a lo largo del tiempo. Esto es esperado, ya que en el mercado de criptomonedas, los movimientos de precios dentro de un día suelen estar muy interconectados.</p></li>
+<li><p><strong>Fecha con otras variables</strong>: La correlación entre la fecha y las variables de precios y volumen muestra una relación moderada (alrededor de 0.56 a 0.57), sugiriendo que ha habido una tendencia a lo largo del tiempo en el comportamiento de los precios y el volumen de transacciones.</p></li>
+<li><p><strong>Volumen con precios</strong>: El volumen de transacciones muestra correlaciones significativas con los precios de apertura, máximo, mínimo, y cierre (de 0.72 a 0.74 aproximadamente). Esto indica que hay una relación entre la cantidad de actividad comercial y los movimientos de precios, lo cual podría sugerir que días con mayor volumen de transacciones tienden a tener movimientos de precios más pronunciados.</p></li>
+</ul>
+</section>
+<section id="implicaciones">
+<h2>Implicaciones:<a class="headerlink" href="#implicaciones" title="Link to this heading">#</a></h2>
+<p>Estas correlaciones altas entre las variables de precios sugieren que el comportamiento del mercado es consistente a través de diferentes medidas de precios en un mismo día. La relación moderada entre la fecha y otras variables puede indicar tendencias a largo plazo en el precio y volumen de ADA-USD. La correlación entre el volumen y los precios destaca la influencia de la actividad del mercado en los movimientos de precios.</p>
+<p>Este tipo de análisis es fundamental para inversores y analistas que buscan entender las dinámicas del mercado de criptomonedas, especialmente para aquellos interesados en ADA-USD, ofreciendo insights valiosos sobre cómo diferentes aspectos del mercado están interrelacionados.</p>
+<section id="gafico-candlestick">
+<h3><strong>Gafico CandleStick:</strong><a class="headerlink" href="#gafico-candlestick" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">go</span><span class="o">.</span><span class="n">Candlestick</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">dataclean</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+            <span class="nb">open</span><span class="o">=</span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;Open&quot;</span><span class="p">],</span>
+            <span class="n">high</span><span class="o">=</span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;High&quot;</span><span class="p">],</span>
+            <span class="n">low</span><span class="o">=</span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;Low&quot;</span><span class="p">],</span>
+            <span class="n">close</span><span class="o">=</span><span class="n">dataclean</span><span class="p">[</span><span class="s2">&quot;Close&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Gráfico de Velas:&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Fecha&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Precio&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+</section>
+<section id="analisis-de-grafico-de-velas">
+<h2>Análisis de Gráfico de Velas<a class="headerlink" href="#analisis-de-grafico-de-velas" title="Link to this heading">#</a></h2>
+<section id="periodos-de-volatilidad">
+<h3>Periodos de Volatilidad<a class="headerlink" href="#periodos-de-volatilidad" title="Link to this heading">#</a></h3>
+<p>Se identifican por velas con cuerpos grandes y sombras extensas, lo que implica fluctuaciones notables entre los precios altos y bajos, así como diferencias significativas entre los precios de apertura y cierre.</p>
+</section>
+<section id="periodos-de-estabilidad">
+<h3>Periodos de Estabilidad<a class="headerlink" href="#periodos-de-estabilidad" title="Link to this heading">#</a></h3>
+<p>Caracterizados por velas más pequeñas y sombras cortas, indicando menor volatilidad y un mercado más tranquilo.</p>
+<p>Un indicador técnico, posiblemente un promedio móvil, se observa en la parte inferior del gráfico, ayudando a identificar la dirección general de la tendencia.</p>
+</section>
+</section>
+<section id="patrones-observados-y-estrategias-sugeridas">
+<h2>Patrones Observados y Estrategias Sugeridas<a class="headerlink" href="#patrones-observados-y-estrategias-sugeridas" title="Link to this heading">#</a></h2>
+<section id="tendencia-alcista">
+<h3>Tendencia Alcista<a class="headerlink" href="#tendencia-alcista" title="Link to this heading">#</a></h3>
+<p>Un patrón de velas crecientes sugiere una fuerte presión de compra. Los inversores podrían considerar entrar en posiciones largas o agregar a posiciones existentes durante estos períodos.</p>
+</section>
+<section id="posible-cambio-de-tendencia">
+<h3>Posible Cambio de Tendencia<a class="headerlink" href="#posible-cambio-de-tendencia" title="Link to this heading">#</a></h3>
+<p>Una secuencia de velas decrecientes puede señalar un cambio de tendencia o corrección de precio. Los traders podrían tomar esto como una señal para cerrar posiciones largas o iniciar posiciones cortas.</p>
+</section>
+</section>
+<section id="acciones-sugeridas">
+<h2>Acciones Sugeridas<a class="headerlink" href="#acciones-sugeridas" title="Link to this heading">#</a></h2>
+<section id="estrategias-de-seguimiento-de-tendencia">
+<h3>Estrategias de Seguimiento de Tendencia<a class="headerlink" href="#estrategias-de-seguimiento-de-tendencia" title="Link to this heading">#</a></h3>
+<p>Utilizar indicadores como medias móviles para confirmar la tendencia y mantener posiciones mientras la tendencia persista.</p>
+</section>
+<section id="gestion-de-riesgos">
+<h3>Gestión de Riesgos<a class="headerlink" href="#gestion-de-riesgos" title="Link to this heading">#</a></h3>
+<p>Establecer órdenes de stop-loss durante periodos de alta volatilidad para proteger las inversiones contra movimientos de precios inesperados.</p>
+</section>
+<section id="aprovechamiento-de-correcciones">
+<h3>Aprovechamiento de Correcciones<a class="headerlink" href="#aprovechamiento-de-correcciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Observar señales de sobreventa para entrar en el mercado en posiciones largas si se espera una recuperación del precio.</p></li>
+<li><p>La combinación de un análisis técnico riguroso con una gestión de riesgos prudente puede ayudar a los inversores a tomar decisiones más informadas y potencialmente rentables.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="btc-usd.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Time Series</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias"><strong>Importacion de librerias</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conexion-y-cursor"><strong>Creacion de conexion y cursor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-crear-la-tabla-nombrada-employees-y-explicar-que-tarea-realiza-la-consulta-realizada-y-mostrar-en-pantalla-la-tabla"><strong>I) Crear la tabla nombrada: employees y explicar que tarea realiza la consulta realizada y mostrar en pantalla la tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-crear-la-tabla-courses-con-las-siguientes-columnas"><strong>II) Crear la tabla courses con las siguientes columnas:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-insertar-datos"><strong>III) Insertar datos:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-borre-todos-los-cursos-que-no-esten-en-modo-borrador-ni-publicados-proporcione-la-sentencia-de-borrado-como-respuesta-para-este-ejercicio-en-el-jupyter-book-para-validar-obtenga-el-recuento-de-todos-los-cursos-publicados-por-autor-y-asegurese-de-que-la-salida-esta-ordenada-en-forma-descendente-por-recuento"><strong>IV) Borre todos los cursos que no estén en modo borrador ni publicados. Proporcione la sentencia de borrado como respuesta para este ejercicio en el Jupyter Book. Para validar, obtenga el recuento de todos los cursos publicados por autor y asegúrese de que la salida está ordenada en forma descendente por recuento.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-crear-la-base-de-datos-users"><strong>VI) Crear la base de datos users:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vii-obtenga-el-numero-de-usuarios-creados-por-ano-utilice-la-tabla-de-usuarios-para-este-ejercicio"><strong>VII) Obtenga el número de usuarios creados por año. Utilice la tabla de usuarios para este ejercicio:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viii-obtenga-los-dias-de-nacimiento-de-todos-los-usuarios-nacidos-en-el-mes-may"><strong>VIII) Obtenga los días de nacimiento de todos los usuarios nacidos en el mes May.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-obtenga-el-numero-de-usuarios-por-genero-utilice-la-tabla-de-users-para-este-ejercicio"><strong>X) Obtenga el número de usuarios por género. Utilice la tabla de users para este ejercicio.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xii-obtenga-los-4-ultimos-digitos-de-los-ids-unicos"><strong>XII) Obtenga los 4 últimos dígitos de los ids únicos:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xiii-obtenga-el-recuento-de-usuarios-en-funcion-del-codigo-de-pais"><strong>XIII) Obtenga el recuento de usuarios en función del código de país:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xiv-importe-los-datos-del-precio-de-cardano-usd-ada-usd-en-su-instancia-de-base-de-datos-docker-teniendo-en-cuenta-lo-explicado-durante-esta-seccion-luego-dibuje-un-grafico-de-candlestick-para-la-criptomoneda-en-el-siguiente-link-encontrara-el-csv-de-cardano-cardano-usd-ada-usd-describa-lo-que-puede-observar-en-la-serie-de-tiempo-realice-un-analisis-exploratorio-de-datos-eda-para-la-serie-de-tiempo"><strong>XIV)</strong> Importe los datos del precio de Cardano USD (ADA-USD) en su instancia de base de datos Docker, teniendo en cuenta lo explicado durante esta sección. Luego dibuje un gráfico de candlestick para la criptomoneda. En el siguiente link encontrará el CSV de Cardano: Cardano USD (ADA-USD). Describa lo que puede observar en la serie de tiempo. Realice un análisis exploratorio de datos (EDA) para la serie de tiempo.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-los-datos"><strong>Descripcion de los datos:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eda"><strong>EDA:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza"><strong>Limpieza</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary"><strong>Summary</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-sumamry">Analisis del Sumamry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observaciones-clave">Observaciones Clave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion"><strong>Correlacion</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlaciones-observadas">Correlaciones Observadas:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicaciones">Implicaciones:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gafico-candlestick"><strong>Gafico CandleStick:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-grafico-de-velas">Análisis de Gráfico de Velas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodos-de-volatilidad">Periodos de Volatilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodos-de-estabilidad">Periodos de Estabilidad</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patrones-observados-y-estrategias-sugeridas">Patrones Observados y Estrategias Sugeridas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tendencia-alcista">Tendencia Alcista</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posible-cambio-de-tendencia">Posible Cambio de Tendencia</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acciones-sugeridas">Acciones Sugeridas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategias-de-seguimiento-de-tendencia">Estrategias de Seguimiento de Tendencia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gestion-de-riesgos">Gestión de Riesgos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprovechamiento-de-correcciones">Aprovechamiento de Correcciones</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Juan Albis, Jesus Arevalo y Celien Bonhomme
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
